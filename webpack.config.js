@@ -26,6 +26,11 @@ module.exports = {
 		"webpack/hot/dev-server",
 		"./src/demo3/index"
 		],
+		demo5:[
+		// "webpack-dev-server/client?http://127.0.0.1:4000/",
+		"webpack/hot/dev-server",
+		"./src/demo5/index"
+		],
         // demo3:"./src/demo3",
         
     },
