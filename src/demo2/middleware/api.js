@@ -58,6 +58,3 @@ export default store => next => action => {
 	return t1;
 	
 }
-
-
-

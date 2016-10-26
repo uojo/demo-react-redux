@@ -12,7 +12,7 @@ const initD = {
 }
 
 export default function fn1(state=initD, action){
-	// console.info( "0.reducer.js~r2", state, action );
+	console.info( "0.reducer.js~r2", state, action );
 	
 	switch (action.type) {
 		
@@ -21,6 +21,16 @@ export default function fn1(state=initD, action){
 			return extend(true, {}, state, {
 				count:++state.count
 			});
+			
+		case '@@reduxReactRouter/initRoutes':
+			// console.info()
+			
+			return state;
+		case '@@reduxReactRouter/routerDidChange':
+			
+			const {location} = action.payload;
+			console.warn( "%clocation","color:green;", location.state, location.query )
+			
 			
 		case '@@redux/INIT':
 		default:

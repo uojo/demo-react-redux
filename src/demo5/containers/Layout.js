@@ -27,7 +27,7 @@ class App extends Component {
 	}
 	
 	render() {
-		console.debug( "6.app.js~render 更新组件视图", this.props );
+		console.debug( "6.Layout.js~render 更新组件视图", this.props );
 		
 		// 来自继承
 		const {children} = this.props;

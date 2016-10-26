@@ -9,9 +9,6 @@ import Logs from '../components/Logs';
 import Item from '../components/Item';
 import * as Actions from '../actions/list'
 
-// 引入样式
-require("../style/1.css");
-
 
 class App extends Component {
 	constructor(props) {
@@ -165,12 +162,6 @@ class App extends Component {
 				<br/>
 				<Logs data={logs} />
 				
-				<ol>
-					<li><a href="#/a"> 路由A </a></li>
-					<li><a href="#/b"> 路由B </a></li>
-				</ol>
-				
-				{children}
 			</div>
 		)
 	};

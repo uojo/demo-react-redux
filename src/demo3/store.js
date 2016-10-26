@@ -3,6 +3,7 @@
 import { createStore, applyMiddleware } from 'redux';
 // import api from './middleware_api'
 import thunk from 'redux-thunk';
+import api_1 from './api_1';
 import reducer from './reducer';
 
 // createStore第二个参数【可选】用于初始化 state
@@ -10,6 +11,6 @@ import reducer from './reducer';
 // let oriData = {};
 let oriData = undefined;
 
-const store = createStore(reducer, oriData, applyMiddleware( thunk ) );
+const store = createStore(reducer, oriData, applyMiddleware( thunk, api_1 ) );
 
 export default store;

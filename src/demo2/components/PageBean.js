@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react'
+require("../style/1.css");
 
 class Cp1 extends Component {
   constructor(props) {

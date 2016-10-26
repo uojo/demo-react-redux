@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form'
-import { form1_load1, form1_load2 } from './actions'
+import { form1_load1, form1_load2, requestSubmit } from './actions'
 // import 
 
-const data = {  // used to populate "account" reducer when "Load" is clicked
+const data_local = {  // used to populate "account" reducer when "Load" is clicked
   firstName: 'Jane',
   lastName: 'Doe',
+  email: "xxx@xxx.com",
   age: 1,
   sex: 'female',
   employed: true,
@@ -27,15 +28,20 @@ let FormA = (props) => {
   const fn2 = s1 => {
 		change("age",110);
 	}
-	
+
+  const fn3 = s1 => {
+		console.debug("fn3", s1)
+		dispatch(requestSubmit(s1))
+	}
   // (change("email",120))
   // ( dispatch(as_init))
   // (initialize(data));
   // ( ()=>initialize(data) );
   
+  
   return (
-    <form onSubmit={handleSubmit}>
-      <h5>simple form <button type="button" onClick={()=>load(data)}>set initialize</button></h5>
+    <form onSubmit={handleSubmit( fn3 )}>
+      <h5>simple form <button type="button" onClick={()=>load(data_local)}>set initialize</button></h5>
       <div>
         <label>First Name</label>
         <div>
@@ -104,11 +110,12 @@ let FormA = (props) => {
 
 FormA = reduxForm({
   form: 'form1',  // a unique identifier for this form
+  // touchOnBlur:false,
   // 初始赋值
-  initialValues:{
+  /* initialValues:{
 	  firstName:'wang',
 	  lastName: 'chong'
-  },
+  }, */
   // enableReinitialize:true,
   /* getFormState:function(ops){
 	  console.info("getFormState",ops);
@@ -121,12 +128,14 @@ FormA = connect(
   state => {
     console.log( 34,"将state注册到props中",state )
 	
+	const {step, data} = state.reducer_1;
+	
 	const {firstName, lastName} = sltor1(state, "firstName", "lastName");
 	
 	return {
-		initialValues: state.reducer_1.data,
+		initialValues: data,
 		v3: `${firstName || ""} ${lastName || ""}`,
-		v4: Object.assign(data,{age:++data.age})
+		v4: Object.assign( data_local, {age:++data_local.age})
 	} // pull initial values from account reducer
   },
   { load: form1_load1, as_init:form1_load2 }               // bind account loading action creator

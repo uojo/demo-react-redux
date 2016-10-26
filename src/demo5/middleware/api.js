@@ -1,4 +1,4 @@
-import * as As from '../actions/list'
+import * as As from '../actions/layout'
 import fetch from 'isomorphic-fetch'
 import {extend, param} from "jquery"
 
